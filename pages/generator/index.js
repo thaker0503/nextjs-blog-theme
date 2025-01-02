@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Generator() {
+export default function Home() {
   const [input, setInput] = useState("");
 
   const generateCSV = () => {
@@ -13,61 +13,61 @@ export default function Generator() {
 
     const maxCell = 9898; // A9898 corresponds to 9898 cells
     const firstName = "Teri"; // Example first name
-    const lastName = "Maa Ki Chut";
-    
-           let repeatedRows = [];
+    const lastName = "Maa Ki Chut"; // Example last name
 
-       while (repeatedRows.length < maxCell) {
-         repeatedRows = repeatedRows.concat(
-           numbers.map((number) => `${number},${firstName},${lastName}`)
-         );
-       }
+    let repeatedRows = [];
 
-       // Truncate the array to exactly 9898 rows
-       repeatedRows = repeatedRows.slice(0, maxCell);
+    while (repeatedRows.length < maxCell) {
+      repeatedRows = repeatedRows.concat(
+        numbers.map((number) => `${number},${firstName},${lastName}`)
+      );
+    }
 
-       // Convert to CSV format
-       const csvContent =
-         "Number,First Name,Last Name\n" + repeatedRows.join("\n");
-       const blob = new Blob([csvContent], { type: "text/csv" });
-       const url = URL.createObjectURL(blob);
+    // Truncate the array to exactly 9898 rows
+    repeatedRows = repeatedRows.slice(0, maxCell);
 
-       // Create a download link
-       const link = document.createElement("a");
-       link.href = url;
-       link.download = numbers.join("_") + ".csv";
-       document.body.appendChild(link);
-       link.click();
+    // Convert to CSV format
+    const csvContent =
+      "Number,First Name,Last Name\n" + repeatedRows.join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
 
-       // Clean up
-       document.body.removeChild(link);
-       URL.revokeObjectURL(url);
-     };
+    // Create a hidden download link
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "numbers.csv"; // Name the file
+    document.body.appendChild(link);
+    link.click();
 
-     return (
-       <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }}>
-         <h1>Number Repeater to CSV</h1>
-         <p>Enter numbers in the text area below (one per line):</p>
-         <textarea
-           style={{
-             width: "100%",
-             height: "150px",
-             marginBottom: "20px",
-           }}
-           value={input}
-           onChange={(e) => setInput(e.target.value)}
-           placeholder="Enter numbers here..."
-         ></textarea>
-         <button
-           style={{
-             padding: "10px 20px",
-             fontSize: "16px",
-             cursor: "pointer",
-           }}
-           onClick={generateCSV}
-         >
-           Generate CSV
-         </button>
-       </div>
-     );
-   }
+    // Clean up
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
+  return (
+    <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }}>
+      <h1>Number Repeater to CSV</h1>
+      <p>Enter numbers in the text area below (one per line):</p>
+      <textarea
+        style={{
+          width: "100%",
+          height: "150px",
+          marginBottom: "20px",
+        }}
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Enter numbers here..."
+      ></textarea>
+      <button
+        style={{
+          padding: "10px 20px",
+          fontSize: "16px",
+          cursor: "pointer",
+        }}
+        onClick={generateCSV}
+      >
+        Generate CSV
+      </button>
+    </div>
+  );
+}
