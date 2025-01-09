@@ -12,8 +12,8 @@ export default function Home() {
     }
 
     const maxCell = 9898; // A9898 corresponds to 9898 cells
-    const firstName = "Teri"; // Example first name
-    const lastName = "Maa Ki Chut"; // Example last name
+    const firstName = "John"; // Example first name
+    const lastName = "Doe"; // Example last name
 
     let repeatedRows = [];
 
