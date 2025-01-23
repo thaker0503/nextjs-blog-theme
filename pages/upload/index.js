@@ -16,11 +16,13 @@ export default function UploadPage() {
 
       const formattedData = jsonData.map((row) => {
         const name = row.name || '';
+        const street = row.street || '';
+        const city = row.city || '';
+        const state = row.state || '';
+        const zip = row.zip || '';
         const email = row.email || '';
-        const address = row.address || '';
-        const number = row.number || '';
 
-        return `-----------------------------\n\n${name}\n${address}\n\n${email}\n\nESIM PHONE NUMBER:  ${number}\n\n-----------------------------`;
+        return `-----------------------------\n\n${name}\n${street}\n${city} ${state} ${zip}\n\n${email}\n\nESIM PHONE NUMBER:\n\n-----------------------------`;
       });
 
       setOutputData(formattedData);
