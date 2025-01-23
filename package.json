@@ -31,7 +31,8 @@
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remark-gfm": "^4.0.0"
+    "remark-gfm": "^4.0.0",
+    "xlsx": "0.18.5"
   },
   "devDependencies": {
     "@stackbit/cms-git": "^1.0.10",
